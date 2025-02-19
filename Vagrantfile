@@ -9,4 +9,5 @@ Vagrant.configure("2") do |config|
   
     # Provisioning scripts
     config.vm.provision "shell", path: "scripts/install_k3s.sh"
+    config.vm.provision "shell", path: "scripts/install_helm.sh"
   end
