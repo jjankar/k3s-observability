@@ -15,6 +15,7 @@ curl -sfL https://get.k3s.io | sh -
 mkdir -p $HOME/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+sudo chmod 644 /etc/rancher/k3s/k3s.yaml
 
 # Enable and start K3s service
 sudo systemctl enable k3s
