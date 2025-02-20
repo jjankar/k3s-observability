@@ -6,6 +6,10 @@ Vagrant.configure("2") do |config|
       vb.memory = "4096"  # Allocate 4GB RAM
       vb.cpus = 2          # Allocate 2 CPUs
     end
+
+     # Forward required Longhorn ports
+     config.vm.network "forwarded_port", guest: 9500, host: 9500  # Longhorn UI
+     config.vm.network "forwarded_port", guest: 9501, host: 9501  # Longhorn API
   
     # Provisioning scripts
     config.vm.provision "shell", path: "scripts/install_k3s.sh"
