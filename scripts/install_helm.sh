@@ -13,6 +13,7 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 
 echo "Cleaning up..."
 rm -rf helm-v3.10.1-linux-amd64.tar.gz linux-amd64
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 echo "Verifying Helm installation..."
 helm version
