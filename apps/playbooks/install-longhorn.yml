@@ -1,0 +1,25 @@
+- name: Install Longhorn on K3s
+  hosts: k3s_master
+  become: yes
+  tasks:
+
+    - name: Add Longhorn Helm repository
+      command: helm repo add longhorn https://charts.longhorn.io
+      changed_when: false
+
+    - name: Update Helm repositories
+      command: helm repo update
+      changed_when: false
+
+    - name: Install Longhorn using Helm
+      command: helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
+      args:
+        creates: /var/lib/rancher/k3s/server/manifests/longhorn.yaml  # Prevent reinstallation
+
+    - name: Wait for Longhorn pods to be ready
+      shell: kubectl wait --for=condition=Ready pods --all --namespace longhorn-system --timeout=600s
+      changed_when: false
+
+    - name: Ensure Longhorn service is running
+      shell: kubectl get service longhorn-backend -n longhorn-system
+      changed_when: false
