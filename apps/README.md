@@ -1,0 +1,1 @@
+ansible-playbook -i ./inventory/host.ini ./playbooks/install-longhorn.yml
