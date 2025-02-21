@@ -15,11 +15,3 @@
       command: helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace
       args:
         creates: /var/lib/rancher/k3s/server/manifests/longhorn.yaml  # Prevent reinstallation
-
-    - name: Wait for Longhorn pods to be ready
-      shell: kubectl wait --for=condition=Ready pods --all --namespace longhorn-system --timeout=600s
-      changed_when: false
-
-    - name: Ensure Longhorn service is running
-      shell: kubectl get service longhorn-backend -n longhorn-system
-      changed_when: false
