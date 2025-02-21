@@ -1,5 +1,5 @@
 - name: Install Longhorn on K3s
-  hosts: k3s_master
+  hosts: web
   become: yes
   tasks:
 

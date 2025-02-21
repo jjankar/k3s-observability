@@ -1,8 +1,11 @@
+## Fix vagrant plugin
+https://github.com/hashicorp/vagrant/issues/13553
 
-##Fix ip range:
+
+## Fix ip range:
 vi /etc/vbox/networks.conf
 
-##After adding longhorn install script:
+## After adding longhorn install script:
 Current machine states:
 
 default                   aborted (virtualbox)
